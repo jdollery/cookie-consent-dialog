@@ -1,0 +1,140 @@
+.cookie-dialog {
+
+  &__table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    table-layout: auto;
+
+    @media (min-width: $media-min) {
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    th, td {
+      vertical-align: top;
+      border: 1px solid $color-grey;
+      padding: 4px 10px 4px 10px;
+      text-align: left;
+
+      &:nth-child(1) {
+        word-break: break-word;
+        min-width: 140px;
+      }
+
+    }
+
+    th {
+      font-weight: bold;
+    }
+
+    @media (max-width: $media-min) {
+
+      caption,
+      table,
+      thead, 
+      tbody, 
+      th, 
+      td, 
+      tr { 
+        display: block; 
+      }
+
+      thead {
+        display: none;
+      }
+
+      tbody {
+
+        td { 
+          border: none;
+          border-width: 1px 1px 0 1px;
+          border-style: solid; 
+          border-color: $color-grey;
+          position: relative;
+          white-space: normal;
+          text-align: left;
+          padding: 4px 10px 4px 130px;
+          
+          &:before { 
+            position: absolute;
+            top: 4px;
+            left: 10px;
+            width: 40%;  
+            white-space: nowrap;
+            text-align: left;
+            font-weight: bold;
+          }
+
+          &:nth-child(1) {
+            
+            &:before { 
+              content: 'Cookie name';
+            }
+
+          }
+
+          &:nth-child(2) {
+            
+            &:before { 
+              content: 'Provider';
+            }
+
+          }
+
+          &:nth-child(3) {
+            
+            &:before { 
+              content: 'Type';
+            }
+
+          }
+
+          &:nth-child(4) {
+            
+            &:before { 
+              content: 'Expiry';
+            }
+
+          }
+
+          &:nth-child(5) {
+            
+            &:before { 
+              content: 'Description';
+            }
+
+          }
+
+          &:first-child {
+            border-width: 1px 1px 0 1px;
+            width: auto;
+          }
+
+          &:last-child {
+            border-width: 1px;
+            width: auto;
+          }
+
+        }
+
+        tr {
+
+          &:not(:last-child) {
+            border-width: 0 0 20px 0;
+            border-style: solid; 
+            border-color: $color-white;
+          }
+
+        }
+  
+      }
+
+    }
+
+  }
+
+}

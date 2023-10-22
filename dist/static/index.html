@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="robots" content="noindex" />
+    <title>Cookie Consent - Static Implementation</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    
+    <!-- <link rel="stylesheet" href="https://cookie-policy-e7u.pages.dev/cookie-styles.css"> -->
+    <link rel="stylesheet" href="cookie-styles.css">
+
+    <style>
+      body {
+        font-family: 'Open Sans', sans-serif;
+      }
+      /*-----------------------------------------------------------------------------------*/
+      /* FOOTER STYLING */
+      /*-----------------------------------------------------------------------------------*/
+      
+      /* .cookie-dialog__body {
+        bottom: 0;
+        -webkit-transform: translateY(100%);
+        -moz-transform: translateY(100%);
+        -o-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        transform: translateY(100%);
+        -webkit-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        -moz-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        -o-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        -ms-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+      }
+
+      @media (min-width: 1400px) {
+
+        .cookie-dialog__control {
+          flex-direction: row;
+        }
+
+        .cookie-dialog__allow {
+          margin: 0 3px 0 0 ;
+        }
+
+        .cookie-dialog__more {
+          margin: 0 0 0 3px;
+        }
+
+      } */
+
+
+      /*-----------------------------------------------------------------------------------*/
+      /* HEADER STYLING */
+      /*-----------------------------------------------------------------------------------*/
+      
+      /* .cookie-dialog__body {
+        top: 0;
+        max-width: 100%;
+        width: 900px;
+        padding: 0 15px;
+        -webkit-transform: translateY(-100%);
+        -moz-transform: translateY(-100%);
+        -o-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+        transform: translateY(-100%);
+        -webkit-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        -moz-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        -o-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        -ms-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+      } */
+
+
+      /*-----------------------------------------------------------------------------------*/
+      /* MODAL STYLING */
+      /*-----------------------------------------------------------------------------------*/
+
+      /* .cookie-dialog__body {
+        top: 30px;
+        opacity: 0;
+        max-width: 100%;
+        width: 580px;
+        padding: 0 15px;
+        -webkit-transform: translateY(50%);
+        -moz-transform: translateY(50%);
+        -o-transform: translateY(50%);
+        -ms-transform: translateY(50%);
+        transform: translateY(50%);
+        -webkit-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        -moz-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        -o-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        -ms-transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+        transition: transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1);
+      }
+
+      .cookie-dialog__inner {
+        -webkit-box-shadow: 0.3rem 0.3rem 2rem 0.5rem rgba(29, 29, 29, 0.2); 
+        box-shadow: 0.3rem 0.3rem 2rem 0.5rem rgba(29, 29, 29, 0.2);
+        border-radius: 6px;
+      }
+
+      .cookie-dialog--active .cookie-dialog__body {
+        opacity: 1;
+      }
+
+      .cookie-dialog__header {
+        flex-basis: auto;
+        padding: 0 0 30px 0;
+      }
+
+      .cookie-dialog__control {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .cookie-dialog__allow {
+        margin: 0;
+      }
+
+      .cookie-dialog__reject,
+      .cookie-dialog__more {
+        margin: 5px 0 0 0;
+      }
+
+      @media (min-width: 768px) {
+
+        .cookie-dialog__body {
+          top: 100px;
+        }
+
+        .cookie-dialog__body--header {
+          padding: 25px 30px;
+        }
+
+        .cookie-dialog__inner {
+          padding: 30px 35px;
+          border-radius: 8px;
+        }
+
+      } */
+
+    </style>
+
+    <!-- <script type="text/javascript" src="https://cookie-policy-e7u.pages.dev/cookie-script.js" defer></script> -->
+    <script type="text/javascript" src="cookie-script.js" defer></script>
+
+    <script type="text/javascript" defer>
+
+      window.addEventListener('load', function () {
+        setCookieConsent({
+          policy_url: "https://dental-design.marketing/cookie-policy/", //REMOVE LINE IF NOT NEEDED
+          policy_link: "cookie policy", //REMOVE LINE IF NOT NEEDED
+          tag: "GTM-XXXXXXX",  //REMOVE LINE IF NOT NEEDED
+          pixel: "XXXXXXXXXXXXXXXX", //REMOVE LINE IF NOT NEEDED,
+        });
+      });
+
+    </script>
+
+  </head>
+
+  <body>
+
+    <!-- TAGMANAGER CONFIRMATION SCRIPT - REMEMBER TO ADD GTM TAG -->
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- PIXEL CONFIRMATION SCRIPT - REMEMBER TO ADD PIXEL TAG -->
+
+    <noscript><img src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXX&ev=PageView&noscript=1" height="1" width="1" style="display:none;visibility:hidden"  /></noscript>
+
+    <!-- DIALOG TEMPLATE - REMEMBER TO ADD POLICY LINK -->
+
+    <!-- <div id="cookieConsent" class="cookie-dialog">
+      <div class="cookie-dialog__backdrop">&nbsp;</div>
+      <div id="cookieDialog" class="cookie-dialog__body">
+        <div class="cookie-dialog__header">
+          This website uses cookies to provide necessary functionality and improve your experience. If you would like to learn more about cookies or reset your preference, please visit our <a href="#">cookie policy</a>.
+        </div>
+        <div class="cookie-dialog__control">
+          <button id="allowCookies" class="cookie-dialog__allow" type="button">Allow all cookies</button>
+          <button id="declineCookies" class="cookie-dialog__reject" type="button">Reject non-essential cookies</button>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- RESET COOKIE BUTTONS - CHOOSE BUTTON OR INLINE LINK -->
+
+    <!-- <button id="resetCookieConsent" class="cookie-dialog__reset" type="button" title="Open Cookie Preferences Dialog">Reset your cookie preference</button>
+
+    <br> -->
+
+    <a href="javascript:void(0);" id="resetCookieConsent" class="cookie-dialog__reset" tabindex="0" type="button" title="Reset and open cookie preferences">Please click here to reset your cookie preference.</a>
+
+  </body>
+</html>

@@ -1,0 +1,457 @@
+.cookie-dialog {
+  position: relative;
+  z-index: 2147483647;
+
+  a {
+    color: inherit;
+    @include transition(opacity 0.8s cubic-bezier(0.3, 1, 0.3, 1));
+    border-bottom: 1px solid var(--cookie-grey);
+    padding-bottom: 2px;
+    text-decoration: none;
+    cursor: pointer;
+
+    @media (min-width: $media-min) {
+      padding-bottom: 3px;
+    }
+
+    @include hover {
+      color: inherit;
+      text-decoration: none;
+      opacity: 0.5;
+    }
+
+  }
+
+  &__backdrop {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    background: var(--cookie-overlay);
+    z-index: 2147483647;
+    @include transition(opacity 1s cubic-bezier(0.3, 1, 0.3, 1));
+  }
+
+  &__body {
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: flex;  
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-family: inherit;
+    font-size: $font-size-sm;
+    line-height: 1.6;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    z-index: 2147483647;
+    visibility: hidden;
+
+    @include transform (translateY(-100%));
+    @include transition(transform 1.2s cubic-bezier(0.3, 1, 0.3, 1), opacity 1.2s cubic-bezier(0.3, 1, 0.3, 1));
+    top: 0;
+    width: 100%;
+    padding: 0 15px;
+
+    @media (min-width: $media-min) {
+      font-size: $font-size-lg;
+    }
+
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background: var(--cookie-black);
+    padding: 20px;
+    max-width: 100%;
+    width: 860px;
+
+    @media (min-width: $media-min) {
+      padding: 20px 30px;
+    }
+
+  }
+
+  &__header {
+    display: block;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 0 20px 0;
+    color: var(--cookie-white);
+
+    @media (min-width: $media-min) {
+      flex-grow: 1;
+      flex-basis: 0;
+      max-width: 100%;
+      padding: 0 30px 0 5px;
+    }
+
+  }
+
+  &__control {
+    display: flex;
+    flex-shrink: 0;
+    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center;
+    margin: 0;
+    flex-direction: column;
+
+    @media (min-width: 480px) {
+      flex-direction: row;
+    }
+
+    @media (min-width: $media-min) {
+      flex: 0 0 auto;
+      -webkit-box-flex: 0;
+      width: auto;
+      flex-direction: column;
+    }
+
+  }
+
+  &__accept {
+    @include button;
+    color: var(--cookie-black) !important;
+    background: var(--cookie-white);
+    border-color: var(--cookie-white);
+
+    @media (min-width: 480px) and (max-width: $media-min) {
+      margin: 0 3px 0 0;
+    }
+
+    @include hover {
+      color: var(--cookie-black) !important;
+      background: var(--cookie-white);
+      border-color: var(--cookie-white);
+      opacity: 0.7;
+    }
+
+  }
+
+  &__manage {
+    @include button;
+    color: var(--cookie-white) !important;
+    margin: 5px 0 0 0;
+    background: transparent;
+    border-color: var(--cookie-grey);
+    opacity: 0.6;
+
+    @include hover {
+      opacity: 1;
+      background: transparent;
+      border-color: var(--cookie-grey);
+    }
+
+    &:focus {
+      border: 1px solid var(--cookie-grey);
+    }
+
+    @media (min-width: 480px) and (max-width: $media-min) {
+      margin: 0 0 0 3px;
+    }
+
+    @media (min-width: $media-min) {
+      margin: 5px 0 0 0;
+    }
+
+  }
+
+  &__reset {
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    -webkit-appearance: button;
+    text-decoration: none;
+    outline: none;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+  }
+
+  &__options {
+    display: block;
+    overflow: hidden;
+    height: 0;
+    width: 100%;
+
+    &--open {
+      height: auto;
+    }
+
+  }
+
+  &__panel {
+    border: 1px solid var(--cookie-grey);
+    padding: 15px 20px 20px;
+    margin: 20px 0 0 0;
+    color: var(--cookie-white);
+    max-height: 50vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    @media (min-width: $media-min) {
+      margin: 20px 0 10px 0;
+    }
+
+  }
+
+  &__intro {
+    font-size: 12px;
+    margin: 10px 0 0 0;
+
+    @media (min-width: $media-min) {
+      font-size: 14px;
+    }
+
+  }
+
+  &__list {
+    display: flex;
+    flex-shrink: 0;
+    flex: 0 0 100%;
+    max-width: 100%;
+    flex-direction: column;
+    margin: 8px 0 0;
+    padding: 0;
+
+    @media (min-width: $media-min) {
+      margin: 10px 0 0;
+    }
+
+  }
+
+  &__term {
+    border-top: 1px solid var(--cookie-grey);
+    margin-top: 10px;
+    padding: 10px 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+
+    @media (min-width: $media-min) {
+      font-size: 15px;
+    }
+
+  }
+
+  &__description {
+    overflow: hidden;
+    display: block;
+    max-height: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+
+    &--open {
+      max-height: 90rem;
+    }
+
+  }
+
+  &__info {
+    display: block;
+    padding: 10px 0 0 0;
+  }
+
+  &__toggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__switch {
+    position: relative;
+    display: block;
+    height: 30px;
+    width: 70px;
+    margin: 0 8px 0 0;
+    padding: 0;
+  }
+
+  &__label {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    opacity: 1;
+  }
+
+  &__knob {
+    position: relative;
+    background: var(--cookie-grey);
+    height: 30px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 70px;
+    flex: 0 0 70px;
+    @include transition(background 0.3s cubic-bezier(0, 1, 0.5, 1));
+
+    &::after,
+    &::before {
+      position: absolute;
+      z-index: 5;
+      text-transform: uppercase;
+      text-align: center;
+      top: 1px;
+      left: 1px;
+      width: 35px;
+      font-size: 11px;
+      line-height: 28px;
+    }
+
+    &::after {
+      content: attr(data-unchecked);
+      background: var(--cookie-black);
+      color: var(--cookie-white);
+      @include transform(translate3d(0, 0, 0));
+      @include transition(transform 0.3s cubic-bezier(0, 1, 0.5, 1));
+    }
+
+  }
+
+  &__checkbox {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    z-index: 0;
+
+    &[disabled] ~ label {
+      pointer-events: none;
+      color: var(--cookie-grey);
+
+      .cookie-dialog__knob {
+        opacity: 0.4;
+
+        &::before {
+          content: attr(data-unchecked);
+          left: 0
+        }
+
+      }
+
+    }
+
+    &:checked ~ label {
+
+      .cookie-dialog__knob {
+
+        &::before {
+          content: attr(data-unchecked);
+          left: 0;
+          color: var(--cookie-grey);
+        }
+
+        &::after {
+          content: attr(data-checked);
+          color: var(--cookie-black);
+          background: var(--cookie-white);
+          @include transform(translate3d(33px, 0, 0));
+        }
+
+      }
+
+    }
+
+  }
+
+  &__view {
+    @include button-base;
+    font-size: 11px;
+    line-height: 1.1;
+    padding: 8px 10px;
+    color: var(--cookie-white);
+    background: var(--cookie-grey);
+    border-color: var(--cookie-grey);
+
+    @include hover {
+      opacity: 0.7;
+    }
+
+    &:focus {
+      border-color: transparent;
+    }
+
+  }
+
+  &__badge {
+    display: block;
+    font-size: 11px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 8px 10px;
+    margin: 0 8px 0 0;
+    color: var(--cookie-black);
+    background: var(--cookie-white);
+  }
+
+  &--active {
+
+    .cookie-dialog {
+
+      &__backdrop {
+        visibility: visible;
+        opacity: 0.7;
+      }
+    
+      &__body {
+        visibility: visible;
+        @include transform (translateY(0));
+        transition-delay: 0.5s;
+      }
+
+    }
+
+  }
+
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/* WIDGET OVERRIDES */
+/*-----------------------------------------------------------------------------------*/
+
+#eb-bot-trigger {
+  z-index: 999999998 !important;
+}
+
+#botwidget {
+  z-index: 999999997 !important;
+}
+
+.wp-gr .wp-google-badge-fixed {
+  z-index: 999999997 !important;
+}
