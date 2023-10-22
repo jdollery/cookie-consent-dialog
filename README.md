@@ -1,1 +1,1 @@
-# Cookie Consent Project
+# Cookie Consent - Google Tag Manager Consent Tool
